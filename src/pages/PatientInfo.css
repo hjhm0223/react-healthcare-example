@@ -1,0 +1,13 @@
+.Patient-info {
+    padding: calc(50px + 2vmin) calc(250px + 2vmin);
+    font-size: calc(8px + 2vmin);
+}
+
+.Patient-info .Search dt {
+    display: flex;
+    margin: 0 30px;
+}
+
+.Patient-info .Search dd{
+    display: flex;
+}
