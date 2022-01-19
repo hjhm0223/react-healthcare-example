@@ -1,23 +1,50 @@
-import Header from '../components/Header';
-import './PatientInfo.css'
+import react, { Component } from 'react';
+import Search from '../components/Search';
+import Table from '../components/Table';
 
-const PatientInfo = () => {
-    return (
-        <div>
-            <Header />
-            <div className="Patient-info">
-                <h2>환자정보</h2>
-                <hr/>
-                <dl className="Search">
-                    <dt><span>진료예약일</span>
-                        <dd><span>날짜입력</span></dd>
-                        <dd><span>날짜입력</span></dd>
-                        <dd><span>날짜선택</span></dd>
-                    </dt>
-                </dl>
+class PatientInfo extends Component {
+    state = {
+        startDate: new Date().toISOString().substr(0, 10),
+        endDate: new Date().toISOString().substr(0, 10),
+        patientName: '',
+        total: '',
+        patientList: []
+    };
+
+    render() {
+        const { total, patientList } = this.state;
+        
+        const handleStartDate = (e) => {
+            this.setState({
+                startDate: e.target.value
+            });
+        }
+        const handleEndDate = (e) => {
+            this.setState({
+                endDate: e.target.value
+            });
+        }
+        const clickDateButton = (e) => {
+            this.setState({
+                startDate: new Date().toISOString().substr(0, 10),
+                endDate: new Date().toISOString().substr(0, 10)
+            });
+        }
+        const changeName = (e) => {
+            this.setState({
+                patientName: e.target.value
+            });
+        }
+        const clickSearchButton = (e) => {
+            console.log(this.state);
+        }
+        return (
+            <div>
+                <Search name="진료예약일" handleStartDate={handleStartDate} handleEndDate={handleEndDate} clickDateButton={clickDateButton} changeName={changeName} clickSearchButton={clickSearchButton} />
+                {/* <Table total={total} patientList={patientList} /> */}
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default PatientInfo;

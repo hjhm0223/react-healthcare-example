@@ -1,19 +1,25 @@
-import logo from '../logo.svg';
-import './Header.css';
+import React from 'react';
+import logo from '../../logo.svg';
+import '../../asserts/styles/Header.css';
 
-const Header = () => {
+const Header = (props) => {
+  const { menuItem, menuClick } = props;
+  
+  const menuList = menuItem.map((item, index) => {
+    return (
+      <li className="Menu-item" key={index} id={item.page} onClick={menuClick}>{item.name}</li> 
+    );
+  });
+
   return (
     <div className="Header">
       <div className="Header-top">
         <div className="Logo">
           <img src={logo} className="React-logo" alt="logo" />
-          <div>Health Care</div>
+          <div><a href="/main">Health Care</a></div>
         </div>
         <ul className="Menu">
-          <li className="Menu-item"><a href="/home">진료일정</a></li>
-          <li className="Menu-item"><a href="/home">진료예약</a></li>
-          <li className="Menu-item"><a href="/patient-info">환자정보</a></li>
-          <li className="Menu-item"><a href="/home">진료이력</a></li>
+          { menuList }
         </ul>
         <ul className="My">
           <li className="My-item"><span>알림</span></li>
@@ -25,7 +31,7 @@ const Header = () => {
       </div>
       <div className="Header-bottom">
         <ul className="Menu">
-          <li className="Menu-item"><a href="/home">Home</a></li>
+          <li className="Menu-item"><a href="/main">Home</a></li>
           <li className="Menu-item"><span>메뉴1</span></li>
           <li className="Menu-item"><span>메뉴2</span></li>
         </ul>
