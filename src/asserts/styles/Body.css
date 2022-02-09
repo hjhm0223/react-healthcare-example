@@ -3,3 +3,9 @@
   margin: 80px 200px;
   font-size: 20px;
 }
+
+.Body .PageName {
+  margin-left: 10px;
+  font-size: 30px;
+  font-weight: bold;
+}

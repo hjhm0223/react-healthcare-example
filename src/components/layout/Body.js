@@ -18,7 +18,7 @@ const Body = (props) => {
     const { menu, name } = props.targetPage;
     return (
         <div className="Body">
-            <h2>{name}</h2>
+            <span className="PageName">{name}</span>
             <hr/>
             { menuList[menu] }
         </div>
